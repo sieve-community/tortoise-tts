@@ -26,7 +26,7 @@ from tortoise.utils.wav2vec_alignment import Wav2VecAlignment
 
 pbar = None
 
-DEFAULT_MODELS_DIR = os.path.join(os.path.expanduser('~'), '.cache', 'tortoise', 'models')
+DEFAULT_MODELS_DIR = os.path.join("/root", '.cache', 'tortoise', 'models')
 MODELS_DIR = os.environ.get('TORTOISE_MODELS_DIR', DEFAULT_MODELS_DIR)
 MODELS = {
     'autoregressive.pth': 'https://huggingface.co/jbetker/tortoise-tts-v2/resolve/main/.models/autoregressive.pth',
