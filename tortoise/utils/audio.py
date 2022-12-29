@@ -44,7 +44,7 @@ def load_audio(audiopath, sampling_rate):
             audio = audio[:, 0]
 
     if lsr != sampling_rate:
-        audio = torchaudio.functional.resample(audio, lsr, sampling_rate)
+        audio = torchaudio.transforms.Resample(lsr, sampling_rate)(audio)
 
     # Check some assumptions about audio range. This should be automatically fixed in load_wav_to_torch, but might not be in some edge cases, where we should squawk.
     # '2' is arbitrarily chosen since it seems like audio will often "overdrive" the [-1,1] bounds.
