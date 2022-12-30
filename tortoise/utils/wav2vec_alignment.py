@@ -61,7 +61,7 @@ class Wav2VecAlignment:
         with torch.no_grad():
             self.model = self.model.to(self.device)
             audio = audio.to(self.device)
-            audio = torchaudio.functional.resample(audio, audio_sample_rate, 16000)
+            audio = torchaudio.transforms.Resample(audio_sample_rate, 16000)(audio)
             clip_norm = (audio - audio.mean()) / torch.sqrt(audio.var() + 1e-7)
             logits = self.model(clip_norm).logits
             self.model = self.model.cpu()
